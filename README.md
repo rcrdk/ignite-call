@@ -6,9 +6,10 @@ I developed this project during classes and as a challenge of my latest studies 
 - [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang.org/)
 - [Stitches](https://stitches.dev)
 - [NextAuth.js](https://next-auth.js.org/) + [Google oAuth](https://developers.google.com/identity/protocols/oauth2)
-- [Prisma](https://www.prisma.io/)
+- [Prisma](https://www.prisma.io/) + MYSQL
 <!-- UPDATE WITH OWN DESIGN SYSTEM -->
 <!-- GOOGLE CALENDAR API -->
+<!-- DAYJS -->
 
 ## 🕹️ Usage 
 <!-- Lorem ipsum -->
