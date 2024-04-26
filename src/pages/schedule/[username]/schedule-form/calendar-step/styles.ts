@@ -20,32 +20,66 @@ export const Container = styled(Box, {
 			},
 		},
 	},
+
+	'@media (max-width:900px)': {
+		display: 'block',
+		maxWidth: 540,
+	},
 })
 
 export const TimePicker = styled('div', {
-	borderLeft: '1px solid $gray600',
-	padding: '$6 $6 0',
-	overflowY: 'scroll',
-	position: 'absolute',
-	inset: '0 0 0 auto',
-	width: 280,
+	padding: 0,
+
+	'@media (min-width:901px)': {
+		borderLeft: '1px solid $gray600',
+		overflowY: 'scroll',
+		position: 'absolute',
+		inset: '0 0 0 auto',
+		width: 280,
+	},
+
+	'@media (max-width:900px)': {
+		paddingBottom: '$6',
+		borderTop: '1px solid $gray600',
+	},
 })
 
 export const TimePickerHeader = styled(Text, {
+	position: 'sticky',
+	top: 0,
+	padding: '$6 $6 0',
+	marginBottom: '$6',
+	background: '$gray800',
 	fontWeight: '$medium',
+	borderTopRightRadius: '$sm',
+	zIndex: 1,
 
 	span: {
 		color: '$gray200',
 	},
+
+	'&:before': {
+		content: '',
+		position: 'absolute',
+		inset: '100% 0 auto',
+		display: 'block',
+		height: '$6',
+		background:
+			'linear-gradient(to bottom, $colors$gray800 0%, $colors$gray800 33%, transparent 100%)',
+	},
 })
 
 export const TimePickerList = styled('div', {
-	marginTop: '$3',
+	padding: '0 $6',
 	display: 'grid',
 	gridTemplateColumns: '1fr',
 	gap: '$2',
 
 	'@media (max-width:900px)': {
+		gridTemplateColumns: '1fr 1fr 1fr',
+	},
+
+	'@media (max-width:600px)': {
 		gridTemplateColumns: '1fr 1fr',
 	},
 })
@@ -60,8 +94,10 @@ export const TimePickerItem = styled('button', {
 	fontSize: '$sm',
 	lineHeight: '$base',
 
-	'&:last-child': {
-		marginBottom: '$6',
+	'@media (min-width:901px)': {
+		'&:last-child': {
+			marginBottom: '$6',
+		},
 	},
 
 	'&:disabled': {
