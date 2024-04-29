@@ -12,6 +12,7 @@ import {
 	TimePickerHeader,
 	TimePickerItem,
 	TimePickerList,
+	TimePickerLoading,
 } from './styles'
 
 interface Availability {
@@ -40,7 +41,7 @@ export function CalendarStep({ onSelectDateTime }: CalendarStepProps) {
 		? dayjs(selectedDate).format('YYYY-MM-DD')
 		: null
 
-	const { data: availability } = useQuery<Availability>({
+	const { data: availability, isLoading } = useQuery<Availability>({
 		queryKey: ['availability', selectedDateWithoutTime],
 		queryFn: async () => {
 			const response = await api.get(`/users/${username}/availability`, {
@@ -72,15 +73,23 @@ export function CalendarStep({ onSelectDateTime }: CalendarStepProps) {
 					</TimePickerHeader>
 
 					<TimePickerList>
-						{availability?.possibleTimes.map((hour) => (
-							<TimePickerItem
-								onClick={() => handleSelectTime(hour)}
-								disabled={!availability.availableTimes.includes(hour)}
-								key={hour}
-							>
-								{String(hour).padStart(2, '0')}:00h
-							</TimePickerItem>
-						))}
+						{isLoading &&
+							Array.from({ length: 12 }).map((_, i) => (
+								<TimePickerLoading key={`cet_${i}`}>
+									Carregando...
+								</TimePickerLoading>
+							))}
+
+						{!isLoading &&
+							availability?.possibleTimes.map((hour) => (
+								<TimePickerItem
+									onClick={() => handleSelectTime(hour)}
+									disabled={!availability.availableTimes.includes(hour)}
+									key={hour}
+								>
+									{String(hour).padStart(2, '0')}:00h
+								</TimePickerItem>
+							))}
 					</TimePickerList>
 				</TimePicker>
 			)}

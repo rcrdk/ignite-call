@@ -4,11 +4,16 @@ import { Check } from '@phosphor-icons/react/dist/ssr'
 import { useRouter } from 'next/router'
 import { signIn, useSession } from 'next-auth/react'
 import { NextSeo } from 'next-seo'
+import { useState } from 'react'
+
+import { ButtonLoading } from '@/styles/global'
 
 import { Container, Header } from '../styles'
 import { AuthError, ConnectBox, ConnectItem } from './styles'
 
 export default function ConnectCalendar() {
+	const [isLoading, setIsLoading] = useState(false)
+
 	const router = useRouter()
 	const session = useSession()
 
@@ -20,6 +25,8 @@ export default function ConnectCalendar() {
 	}
 
 	async function handleNavigateToNextStep() {
+		setIsLoading(true)
+
 		await router.push('/register/time-intervals')
 	}
 
@@ -67,10 +74,11 @@ export default function ConnectCalendar() {
 						<Button
 							type="submit"
 							onClick={handleNavigateToNextStep}
-							disabled={!hasSignedIn}
+							disabled={!hasSignedIn || isLoading}
 						>
 							Próximo passo
 							<ArrowRight />
+							{isLoading && <ButtonLoading />}
 						</Button>
 					</ConnectBox>
 				</Header>

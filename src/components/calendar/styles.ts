@@ -1,5 +1,7 @@
 import { styled, Text } from '@ignite-ui/react'
 
+import { pulseAnimation } from '@/styles/global'
+
 export const CalendarContainer = styled('div', {
 	display: 'flex',
 	flexDirection: 'column',
@@ -94,4 +96,12 @@ export const CalendarDay = styled('button', {
 	'&:focus-visible': {
 		boxShadow: '0 0 0 2px $colors$gray100',
 	},
+})
+
+export const CalendarLoading = styled('div', {
+	aspectRatio: '1',
+	background: '$gray700',
+	borderRadius: '$sm',
+	animation: `${pulseAnimation} 2s cubic-bezier(0.4, 0, 0.6, 1) infinite`,
+	cursor: 'wait',
 })

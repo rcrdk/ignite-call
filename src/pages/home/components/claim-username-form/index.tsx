@@ -5,6 +5,8 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
+import { ButtonLoading } from '@/styles/global'
+
 import { Form, FormAnnotation } from './styles'
 
 const claimUsernameFormSchema = z.object({
@@ -46,6 +48,7 @@ export function ClaimUsernameForm() {
 				<Button size="sm" type="submit" disabled={isSubmitting}>
 					Reservar usuário
 					<ArrowRight />
+					{isSubmitting && <ButtonLoading />}
 				</Button>
 			</Form>
 

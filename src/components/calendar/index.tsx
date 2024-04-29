@@ -13,6 +13,7 @@ import {
 	CalendarContainer,
 	CalendarDay,
 	CalendarHeader,
+	CalendarLoading,
 	CalendarTitle,
 } from './styles'
 
@@ -59,7 +60,7 @@ export function Calendar({ onDateSelected }: CalendarProps) {
 	const currentMonth = currentDate.format('MMMM')
 	const currentYear = currentDate.format('YYYY')
 
-	const { data: blockedDates } = useQuery<BlockedDates>({
+	const { data: blockedDates, isLoading } = useQuery<BlockedDates>({
 		queryKey: [
 			'blocked-dates',
 			currentDate.get('year'),
@@ -177,20 +178,32 @@ export function Calendar({ onDateSelected }: CalendarProps) {
 				</thead>
 
 				<tbody>
-					{calendarWeeks.map(({ week, days }) => (
-						<tr key={week}>
-							{days.map(({ date, disabled }) => (
-								<td key={date.toString()}>
-									<CalendarDay
-										onClick={() => onDateSelected(date.toDate())}
-										disabled={disabled}
-									>
-										{date.get('date')}
-									</CalendarDay>
-								</td>
-							))}
-						</tr>
-					))}
+					{isLoading &&
+						Array.from({ length: 5 }).map((_, i) => (
+							<tr key={`cwr_${i}`}>
+								{Array.from({ length: 7 }).map((__, d) => (
+									<td key={`cwr_${i}_${d}`}>
+										<CalendarLoading />
+									</td>
+								))}
+							</tr>
+						))}
+
+					{!isLoading &&
+						calendarWeeks.map(({ week, days }) => (
+							<tr key={week}>
+								{days.map(({ date, disabled }) => (
+									<td key={date.toString()}>
+										<CalendarDay
+											onClick={() => onDateSelected(date.toDate())}
+											disabled={disabled}
+										>
+											{date.get('date')}
+										</CalendarDay>
+									</td>
+								))}
+							</tr>
+						))}
 				</tbody>
 			</CalendarBody>
 		</CalendarContainer>

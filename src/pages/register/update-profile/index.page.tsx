@@ -18,6 +18,7 @@ import { z } from 'zod'
 
 import { api } from '@/lib/axios'
 import { buildNextAuthOptions } from '@/pages/api/auth/[...nextauth].api'
+import { ButtonLoading } from '@/styles/global'
 
 import { Container, Header } from '../styles'
 import { FormAnnotation, ProfileBox } from './styles'
@@ -80,6 +81,7 @@ export default function UpdateProfile() {
 					<Button type="submit" disabled={isSubmitting}>
 						Finalizar
 						<ArrowRight />
+						{isSubmitting && <ButtonLoading />}
 					</Button>
 				</ProfileBox>
 			</Container>

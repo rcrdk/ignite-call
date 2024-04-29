@@ -1,5 +1,6 @@
 import { Heading, Text } from '@ignite-ui/react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { NextSeo } from 'next-seo'
 
 import previewImage from '@/assets/app-preview.png'
@@ -22,7 +23,13 @@ export default function Home() {
 					</Heading>
 					<Text size="xl">
 						Conecte seu calendário e permita que as pessoas marquem agendamentos
-						no seu tempo livre.
+						no seu tempo livre.{' '}
+						<Link
+							href={`${process.env.NEXTAUTH_URL}/schedule/rcrdk`}
+							target="_blank"
+						>
+							Teste agora!
+						</Link>
 					</Text>
 					<ClaimUsernameForm />
 				</Hero>

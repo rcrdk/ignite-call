@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import { api } from '@/lib/axios'
+import { ButtonLoading } from '@/styles/global'
 
 import { ConfirmForm, FormActions, FormError, FormHeader } from './styles'
 
@@ -98,6 +99,7 @@ export function ConfirmStep({
 
 				<Button type="submit" disabled={isSubmitting}>
 					Confirmar
+					{isSubmitting && <ButtonLoading />}
 				</Button>
 			</FormActions>
 		</ConfirmForm>

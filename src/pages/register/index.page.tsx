@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import { api } from '@/lib/axios'
+import { ButtonLoading } from '@/styles/global'
 
 import { Container, Form, FormError, Header } from './styles'
 
@@ -100,6 +101,7 @@ export default function Register() {
 					<Button type="submit" disabled={isSubmitting}>
 						Próximo passo
 						<ArrowRight />
+						{isSubmitting && <ButtonLoading />}
 					</Button>
 				</Form>
 			</Container>

@@ -14,6 +14,7 @@ import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import { api } from '@/lib/axios'
+import { ButtonLoading } from '@/styles/global'
 import { convertTimeStringToMinutes } from '@/utils/convert-time-string-to-minutes'
 import { getWeekDays } from '@/utils/get-week-days'
 
@@ -173,6 +174,7 @@ export default function TimeIntervals() {
 					<Button type="submit" disabled={isSubmitting}>
 						Próximo passo
 						<ArrowRight />
+						{isSubmitting && <ButtonLoading />}
 					</Button>
 				</IntervalBox>
 			</Container>

@@ -1,5 +1,7 @@
 import { Box, styled, Text } from '@ignite-ui/react'
 
+import { pulseAnimation } from '@/styles/global'
+
 export const Container = styled(Box, {
 	margin: '$6 auto 0',
 	padding: 0,
@@ -112,5 +114,23 @@ export const TimePickerItem = styled('button', {
 
 	'&:focus-visible': {
 		boxShadow: '0 0 0 2px $colors$gray100',
+	},
+})
+
+export const TimePickerLoading = styled('div', {
+	border: 0,
+	background: '$gray700',
+	padding: '$2 0',
+	borderRadius: '$sm',
+	fontSize: '$sm',
+	lineHeight: '$base',
+	color: 'transparent',
+	animation: `${pulseAnimation} 2s cubic-bezier(0.4, 0, 0.6, 1) infinite`,
+	cursor: 'wait',
+
+	'@media (min-width:901px)': {
+		'&:last-child': {
+			marginBottom: '$6',
+		},
 	},
 })
