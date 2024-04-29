@@ -6,6 +6,9 @@ const nextConfig = {
 			transform: '@phosphor-icons/react/dist/ssr{{member}}',
 		},
 	},
+	experimental: {
+		optimizePackageImports: ['@phosphor-icons/react'],
+	},
 }
 
 export default nextConfig
