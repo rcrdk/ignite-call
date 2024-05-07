@@ -1,6 +1,12 @@
 # 📅 Ignite Call
 I developed this project during classes and as a challenge of my latest studies on React lessons at [Rocketseat](https://www.rocketseat.com.br).
 
+<br>
+
+<p align="center">
+  <img alt="Ignite Call Project Preview" src="https://github.com/rcrdk/ignite-call/blob/main/public/preview.jpg?raw=true" width="100%" />
+</p>
+
 ## 🚀 Techs and Tools
 
 - [React](https://reactjs.org) + [Next.js](https://nextjs.org/) + [TypeScript](https://www.typescriptlang.org/)
